@@ -1,0 +1,156 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PeerChat AI 🚀</title>
+
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="#">PeerChat <span style="color:red;">🚀</span>AI</a>
+        <div class="navbar-nav ml-auto align-items-center">
+            <!-- Helping Indicator -->
+            <div class="nav-item nav-link" id="helping-indicator" style="display: none;">
+                <i class="fas fa-spinner fa-spin text-success"></i> Helping...
+            </div>
+            <!-- Save Icon for Chat Sessions -->
+            <a class="nav-item nav-link" href="#" id="save-icon" title="Chat Sessions" data-toggle="modal"
+                data-target="#sessions-modal">
+                <i class="fas fa-save"></i>
+            </a>
+            <!-- Settings Icon -->
+            <a class="nav-item nav-link" href="#" id="settings-icon" title="Settings" data-toggle="modal"
+                data-target="#settings-modal">
+                <i class="fas fa-cog"></i>
+            </a>
+            <!-- User Icon with Online Users Count -->
+            <a class="nav-item nav-link" href="#" id="user-icon" title="Online Users">
+                <i class="fas fa-user"></i>
+                <span id="online-users-count" class="badge badge-pill badge-primary ml-1">0</span>
+            </a>
+        </div>
+    </nav>
+
+   <!-- Chat Sessions Modal -->
+<div class="modal fade" id="sessions-modal" tabindex="-1" aria-labelledby="sessionsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Select Chat Session</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div class="modal-body">
+          <!-- Sessions List with Search -->
+          <ul class="list-group mb-3" id="sessions-list">
+            <!-- Search Input -->
+            <!-- The search input and sessions will be populated dynamically via main.js -->
+          </ul>
+          
+          <!-- New Session Creation -->
+          <div class="input-group">
+            <input type="text" id="new-session-name" class="form-control" placeholder="New Session Name">
+            <div class="input-group-append">
+              <button class="btn btn-primary" id="create-session-btn" type="button">Create</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Main Container -->
+    <div class="container-fluid h-100" style="padding-top: 70px;">
+        <!-- Added padding-top to account for fixed navbar -->
+        <div class="row h-100">
+            <div class="col-12 d-flex flex-column h-100">
+                <!-- Chat Messages Area -->
+                <div id="messages" class="flex-grow-1 overflow-auto p-3">
+                    <!-- Messages will appear here -->
+                </div>
+                <!-- Message Input Area -->
+                <div class="p-3 border-top">
+                    <form id="message-form">
+                        <div class="input-group">
+                            <input type="text" id="message-input" autocomplete="off" placeholder="Type your message..."
+                                class="form-control" required>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">Send</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal fade" id="settings-modal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Select Model</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <select id="model-list" class="form-control">
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Model Loading Progress Bar -->
+    <div id="model-loading" class="progress" style="display:none;">
+        <div id="model-loading-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
+            aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
+    <!-- Include Socket.IO from CDN -->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <!-- Include SimplePeer from CDN -->
+    <script src="https://unpkg.com/simple-peer@9.11.1/simplepeer.min.js"></script>
+
+    <!-- Include Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Include DOMPurify for sanitizing HTML -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
+
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Main JavaScript file -->
+    <script type="module" src="main.js"></script>
+</body>
+
+</html>
