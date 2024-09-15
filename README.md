@@ -1,11 +1,9 @@
 # PeerChat AI 🚀
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/badboysm890/peerchat-ai)
 ![GitHub stars](https://img.shields.io/github/stars/badboysm890/peerchat-ai)
 ![GitHub forks](https://img.shields.io/github/forks/badboysm890/peerchat-ai)
 ![GitHub issues](https://img.shields.io/github/issues/badboysm890/peerchat-ai)
 ![GitHub license](https://img.shields.io/github/license/badboysm890/peerchat-ai)
-![Docker Pulls](https://img.shields.io/docker/pulls/badboysm890/peerchat-ai)
 
 PeerChat AI is a real-time, peer-to-peer chat application powered by AI and WebRTC. It allows users to have private, secure conversations using large language models (LLMs) for intelligent responses. The application runs entirely in the browser with WebGPU acceleration and supports a variety of LLMs that users can choose from, ensuring fast, serverless AI interaction.
 
