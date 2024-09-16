@@ -12,13 +12,13 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server, {
   cors: {
-    origin: ['http://peerai.aiforindia.com', 'https://peerai.aiforindia.com'],
+    origin: ['http://peerai.aiforindia.com', 'https://peerai.aiforindia.com', 'http://localhost:3000'],
     methods: ['GET', 'POST'],
     credentials: true
   }
 });
 
-const allowedOrigins = ['http://peerai.aiforindia.com', 'https://peerai.aiforindia.com'];
+const allowedOrigins = ['http://peerai.aiforindia.com', 'https://peerai.aiforindia.com', 'http://localhost:3000'];
 
 app.use(cors({
   origin: allowedOrigins,
