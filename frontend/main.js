@@ -53,6 +53,20 @@ let socket;
   const form = document.getElementById('message-form');
   form.addEventListener('submit', async (event) => {
       event.preventDefault();
+      console.log('Form submitted.'+currentSessionId);
+      // if there is no chat session create a default session
+      if (!currentSessionId) {
+          const defaultSessionName = 'Default Session';
+          try {
+              const newSession = await createSession(defaultSessionName);
+              console.log('Default session created:', newSession);
+              currentSessionId = newSession.id;
+          } catch (error) {
+              console.error('Failed to create default session:', error);
+              alert('Failed to create a default chat session. Please try again.');
+              return;
+          }
+      }
       const input = document.getElementById('message-input');
       const messageContent = input.value.trim();
       if (messageContent === '' || !currentSessionId) return;
