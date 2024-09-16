@@ -20,5 +20,5 @@ RUN npm install -g pm2
 # Expose backend port
 EXPOSE 3000
 
-# Start the backend server with PM2
-CMD ["pm2", "start", "server.js", "--name", "backend"]
+# Start the backend server with PM2 Runtime
+CMD ["pm2-runtime", "server.js", "--name", "backend"]
