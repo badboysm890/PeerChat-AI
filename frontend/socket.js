@@ -6,7 +6,11 @@
  * @returns {Socket} - The Socket.IO client instance.
  */
 export function connectToSocketServer(isCapable) {
-    const socket = io();
+
+    const SOCKET_SERVER_URL = 'https://apipeerai.aiforindia.com';
+
+
+    const socket = io(SOCKET_SERVER_URL);
   
     // Emit join event with capability status
     socket.emit('join', { capable: isCapable });
