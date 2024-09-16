@@ -8,8 +8,9 @@ services:
     container_name: peerchat-backend
     ports:
       - "3000:3000"
-    volumes:
-      - ./backend:/usr/src/app/backend
+    # Remove or comment out the volumes section to prevent overwriting node_modules
+    # volumes:
+    #   - ./backend:/usr/src/app/backend
     environment:
       - NODE_ENV=production
     restart: unless-stopped
