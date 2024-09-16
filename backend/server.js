@@ -6,10 +6,17 @@ const socketIO = require('socket.io');
 const path = require('path');
 require('dotenv').config();
 const cors = require('cors');
+
 const PORT = process.env.PORT || 3000;
 const app = express();
 const server = http.createServer(app);
-const io = socketIO(server);
+const io = socketIO(server, {
+  cors: {
+    origin: ['http://peerai.aiforindia.com', 'https://peerai.aiforindia.com'],
+    methods: ['GET', 'POST'],
+    credentials: true
+  }
+});
 
 const allowedOrigins = ['http://peerai.aiforindia.com', 'https://peerai.aiforindia.com'];
 
@@ -102,6 +109,6 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}`);
 });
