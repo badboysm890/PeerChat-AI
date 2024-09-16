@@ -11,6 +11,12 @@ COPY backend/package*.json ./
 # Install backend dependencies
 RUN npm install
 
+RUN npm install -g express
+
+RUN npm install -g dotenv
+
+RUN npm install -g cors
+
 # Copy backend source code
 COPY backend/ .
 
