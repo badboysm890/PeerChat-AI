@@ -1,10 +1,9 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Add viewport meta tag -->
     <title>PeerChat AI 🚀</title>
 
     <!-- Include Bootstrap CSS -->
@@ -45,39 +44,38 @@
         </div>
     </nav>
 
-   <!-- Chat Sessions Modal -->
-<div class="modal fade" id="sessions-modal" tabindex="-1" aria-labelledby="sessionsModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5>Select Chat Session</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        
-        <div class="modal-body">
-          <!-- Sessions List with Search -->
-          <ul class="list-group mb-3" id="sessions-list">
-            <!-- Search Input -->
-            <!-- The search input and sessions will be populated dynamically via main.js -->
-          </ul>
-          
-          <!-- New Session Creation -->
-          <div class="input-group">
-            <input type="text" id="new-session-name" class="form-control" placeholder="New Session Name">
-            <div class="input-group-append">
-              <button class="btn btn-primary" id="create-session-btn" type="button">Create</button>
+    <!-- Chat Sessions Modal -->
+    <div class="modal fade" id="sessions-modal" tabindex="-1" aria-labelledby="sessionsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Select Chat Session</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                
+                <div class="modal-body">
+                    <!-- Sessions List with Search -->
+                    <ul class="list-group mb-3" id="sessions-list">
+                        <!-- The search input and sessions will be populated dynamically via main.js -->
+                    </ul>
+                    
+                    <!-- New Session Creation -->
+                    <div class="input-group">
+                        <input type="text" id="new-session-name" class="form-control" placeholder="New Session Name">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" id="create-session-btn" type="button">Create</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
-          </div>
         </div>
-        
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
     </div>
-  </div>
 
     <!-- Main Container -->
     <div class="container-fluid h-100" style="padding-top: 70px;">
@@ -133,7 +131,7 @@
     </div>
 
     <!-- Include Socket.IO from CDN -->
-   <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
 
     <!-- Include SimplePeer from CDN -->
     <script src="https://unpkg.com/simple-peer@9.11.1/simplepeer.min.js"></script>
