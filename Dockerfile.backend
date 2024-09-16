@@ -1,27 +1,32 @@
 # Dockerfile.backend
 
+# Stage 1: Build the Node.js application
+FROM node:16 AS build
+
+WORKDIR /app
+
+# Copy only the package.json and package-lock.json first
+COPY backend/package*.json ./backend/
+
+# Install dependencies
+RUN cd backend && npm install
+
+# Copy the rest of the backend source code
+COPY backend/ ./backend/
+
+# Stage 2: Set up the production environment
 FROM node:16-alpine
 
-# Set working directory
 WORKDIR /usr/src/app/backend
 
-# Copy backend package.json and package-lock.json
-COPY backend/package*.json ./
+# Copy the backend files from the build stage
+COPY --from=build /app/backend /usr/src/app/backend
 
-# Install backend dependencies
-RUN npm install
+# Install PM2 (if needed)
+# RUN npm install -g pm2
 
-RUN npm install -g express
-
-RUN npm install -g dotenv
-
-RUN npm install -g cors
-
-# Copy backend source code
-COPY backend/ .
-
-# Expose backend port
+# Expose the appropriate port
 EXPOSE 3000
 
-# Start the backend server using Node.js directly
+# Start the application
 CMD ["node", "server.js"]
